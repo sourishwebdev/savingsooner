@@ -27,25 +27,57 @@ function isNestedScrollable(target: EventTarget | null) {
 
 export function SmoothScroll() {
   useEffect(() => {
-    const pinTopForSkipHash = () => {
-      if (window.location.hash !== "#main") return;
-      const url = `${window.location.pathname}${window.location.search}`;
-      window.history.replaceState(null, "", url);
-      window.scrollTo(0, 0);
+    const sectionHash = () => {
+      const id = window.location.hash.slice(1);
+      return id === "curriculum" || id === "impact" || id === "for-schools"
+        ? id
+        : "";
     };
 
-    pinTopForSkipHash();
-    window.addEventListener("pageshow", pinTopForSkipHash);
-
     if (prefersReducedMotion()) {
-      return () => window.removeEventListener("pageshow", pinTopForSkipHash);
+      const pinTop = () => {
+        if (sectionHash()) return;
+        if (window.location.hash === "#main") {
+          const url = `${window.location.pathname}${window.location.search}`;
+          window.history.replaceState(null, "", url);
+        }
+        window.scrollTo(0, 0);
+      };
+      pinTop();
+      window.addEventListener("pageshow", pinTop);
+      window.addEventListener("load", pinTop);
+      return () => {
+        window.removeEventListener("pageshow", pinTop);
+        window.removeEventListener("load", pinTop);
+      };
     }
 
     document.documentElement.classList.add("has-smooth-scroll");
 
-    let target = window.scrollY;
-    let current = window.scrollY;
+    let target = 0;
+    let current = 0;
     let running = false;
+    let pinning = true;
+
+    const pinTop = () => {
+      if (sectionHash()) return;
+      pinning = true;
+      running = false;
+      target = 0;
+      current = 0;
+      if (window.location.hash === "#main") {
+        const url = `${window.location.pathname}${window.location.search}`;
+        window.history.replaceState(null, "", url);
+      }
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          pinning = false;
+        });
+      });
+    };
+
+    pinTop();
 
     const maxY = () =>
       Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
@@ -77,7 +109,7 @@ export function SmoothScroll() {
     };
 
     const onScroll = () => {
-      if (running) return;
+      if (running || pinning) return;
       target = window.scrollY;
       current = window.scrollY;
     };
@@ -101,13 +133,16 @@ export function SmoothScroll() {
 
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("pageshow", pinTop);
+    window.addEventListener("load", pinTop);
     document.addEventListener("click", onClick);
 
     return () => {
       document.documentElement.classList.remove("has-smooth-scroll");
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("pageshow", pinTopForSkipHash);
+      window.removeEventListener("pageshow", pinTop);
+      window.removeEventListener("load", pinTop);
       document.removeEventListener("click", onClick);
     };
   }, []);

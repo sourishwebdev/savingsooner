@@ -176,6 +176,7 @@
   html {
     overflow-x: clip;
     overflow-y: auto;
+    overflow-anchor: none;
     background-color: var(--color-deep-iris);
     scroll-behavior: auto;
   }

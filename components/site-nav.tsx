@@ -31,10 +31,13 @@ export function SiteNav() {
       }
     };
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     firstLinkRef.current?.focus();
     window.addEventListener("keydown", onKey);
     window.addEventListener("pointerdown", onPointer);
     return () => {
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("pointerdown", onPointer);
     };
@@ -42,10 +45,10 @@ export function SiteNav() {
 
   return (
     <header className="animate-enter bg-transparent">
-      <div className="mx-auto grid h-section max-w-page grid-cols-[minmax(0,1fr)_auto] items-center px-24 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+      <div className="mx-auto grid h-section max-w-page grid-cols-[minmax(0,1fr)_auto] items-center px-24 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-32 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-32 lg:flex">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className={navLinkClass}>
               {link.label}
@@ -54,14 +57,16 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center justify-end gap-12">
-          <a href="#for-schools" className={`${navCtaClass} hidden md:inline-flex`}>
-            Bring SavingSooner to your school
-          </a>
+          <div className="hidden lg:block">
+            <a href="#for-schools" className={navCtaClass}>
+              Bring SavingSooner to your school
+            </a>
+          </div>
 
           <button
             ref={buttonRef}
             type="button"
-            className={`flex size-32 items-center justify-center rounded-icons text-cloud-white transition-[color,transform] duration-150 hover:text-clinical-cyan hover:-translate-y-px active:text-iris-pulse active:translate-y-0 md:hidden ${focusRing}`}
+            className={`flex size-32 items-center justify-center rounded-icons border border-iris-border text-cloud-white transition-[color,border-color,transform] duration-150 hover:border-clinical-cyan hover:text-clinical-cyan hover:-translate-y-px active:border-iris-pulse active:text-iris-pulse active:translate-y-0 lg:hidden ${focusRing}`}
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -93,7 +98,7 @@ export function SiteNav() {
       <div
         id={menuId}
         hidden={!open}
-        className="border-t border-iris-border bg-iris-shadow px-24 py-24 md:hidden"
+        className="border-t border-iris-border bg-iris-shadow px-24 py-24 lg:hidden"
       >
         <nav aria-label="Mobile" className="mx-auto flex max-w-page flex-col gap-16">
           {navLinks.map((link, index) => (

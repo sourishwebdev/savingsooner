@@ -10,7 +10,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "SavingSooner — Applied economics bootcamps for schools",
+  title: "SavingSooner — Economics Bootcamp for Students",
   description:
     "Co-founded applied economics and entrepreneurship bootcamps. Microeconomics and business models — 160+ students across 9 schools.",
 };

@@ -91,32 +91,45 @@ function ModelStack() {
 
 function TopicList({ topics }: { topics: TopicGroup[] }) {
   return (
-    <div className="mt-32 columns-1 gap-32 md:columns-2">
-      {topics.map((topic) => (
-        <div key={topic.title} className="mb-32 break-inside-avoid">
-          <h4 className="text-body font-semibold text-cloud-white">
-            {topic.title}
-          </h4>
-          {topic.lead ? (
-            <p className="mt-8 text-body-sm text-pearl">{topic.lead}</p>
-          ) : null}
-          <ul className="mt-12 flex flex-col gap-8">
-            {topic.items.map((item) => (
-              <li
-                key={item}
-                className="flex gap-12 text-body-sm text-pearl"
-              >
-                <span
-                  className="mt-12 h-8 w-12 shrink-0 border-t border-lilac-mist"
-                  aria-hidden="true"
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <>
+      <ul className="mt-24 flex flex-col gap-12 md:hidden">
+        {topics.map((topic) => (
+          <li key={topic.title} className="flex gap-12 text-body text-cloud-white">
+            <span
+              className="mt-12 h-8 w-12 shrink-0 border-t border-clinical-cyan"
+              aria-hidden="true"
+            />
+            <span>{topic.title}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-32 hidden columns-1 gap-32 md:block md:columns-2">
+        {topics.map((topic) => (
+          <div key={topic.title} className="mb-32 break-inside-avoid">
+            <h4 className="text-body font-semibold text-cloud-white">
+              {topic.title}
+            </h4>
+            {topic.lead ? (
+              <p className="mt-8 text-body-sm text-pearl">{topic.lead}</p>
+            ) : null}
+            <ul className="mt-12 flex flex-col gap-8">
+              {topic.items.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-12 text-body-sm text-pearl"
+                >
+                  <span
+                    className="mt-12 h-8 w-12 shrink-0 border-t border-lilac-mist"
+                    aria-hidden="true"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -186,10 +199,13 @@ function CurriculumCard({
         </span>
         <p className="mt-16 max-w-[40rem] text-body text-pearl">{summary}</p>
         <p className="mt-16 text-caption text-mint-vital">
-          {open ? "Close" : "Open the full curriculum"}
+          <span className="md:hidden">{open ? "Close" : "See topics"}</span>
+          <span className="hidden md:inline">
+            {open ? "Close" : "Open the full curriculum"}
+          </span>
         </p>
         <div
-          className={`grid transition-[grid-template-rows,opacity] duration-300 ${
+          className={`hidden md:grid transition-[grid-template-rows,opacity] duration-300 ${
             open ? "grid-rows-[0fr] opacity-0" : "grid-rows-[1fr] opacity-100"
           }`}
         >
@@ -244,7 +260,7 @@ export function Curriculum() {
             diagram={<MarketDiagram />}
             align="lg:max-w-[70%]"
           >
-            <p className="max-w-[46rem] text-body text-pearl">
+            <p className="hidden max-w-[46rem] text-body text-pearl md:block">
               {microeconomicsIntro}
             </p>
             <p className="mt-32 text-caption text-clinical-cyan">
@@ -260,7 +276,9 @@ export function Curriculum() {
             diagram={<ModelStack />}
             align="lg:ml-auto lg:max-w-[62%]"
           >
-            <p className="max-w-[46rem] text-body text-pearl">{businessIntro}</p>
+            <p className="hidden max-w-[46rem] text-body text-pearl md:block">
+              {businessIntro}
+            </p>
             <p className="mt-32 text-caption text-clinical-cyan">
               Topics covered
             </p>
@@ -269,10 +287,10 @@ export function Curriculum() {
               <h4 className="text-body font-semibold text-cloud-white">
                 Applied projects
               </h4>
-              <p className="mt-8 max-w-[46rem] text-body-sm text-pearl">
+              <p className="mt-8 hidden max-w-[46rem] text-body-sm text-pearl md:block">
                 {appliedProjectsLead}
               </p>
-              <ul className="mt-16 columns-1 gap-24 md:columns-2">
+              <ul className="mt-16 hidden columns-1 gap-24 md:block md:columns-2">
                 {appliedProjects.map((item) => (
                   <li
                     key={item}
@@ -287,7 +305,7 @@ export function Curriculum() {
                 ))}
               </ul>
             </div>
-            <p className="mt-32 max-w-[46rem] text-body text-cloud-white">
+            <p className="mt-32 hidden max-w-[46rem] text-body text-cloud-white md:block">
               {businessClosing}
             </p>
           </CurriculumCard>

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-full bg-deep-iris">
       <SiteNav />
-      <main id="main">
+      <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         <Impact />
         <Curriculum />

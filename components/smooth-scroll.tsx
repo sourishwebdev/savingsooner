@@ -27,7 +27,19 @@ function isNestedScrollable(target: EventTarget | null) {
 
 export function SmoothScroll() {
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    const pinTopForSkipHash = () => {
+      if (window.location.hash !== "#main") return;
+      const url = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, "", url);
+      window.scrollTo(0, 0);
+    };
+
+    pinTopForSkipHash();
+    window.addEventListener("pageshow", pinTopForSkipHash);
+
+    if (prefersReducedMotion()) {
+      return () => window.removeEventListener("pageshow", pinTopForSkipHash);
+    }
 
     document.documentElement.classList.add("has-smooth-scroll");
 
@@ -78,6 +90,9 @@ export function SmoothScroll() {
       const dest = document.getElementById(id);
       if (!dest) return;
       event.preventDefault();
+      if (id === "main") {
+        dest.focus({ preventScroll: true });
+      }
       target = clamp(
         dest.getBoundingClientRect().top + window.scrollY - ANCHOR_OFFSET,
       );
@@ -92,6 +107,7 @@ export function SmoothScroll() {
       document.documentElement.classList.remove("has-smooth-scroll");
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("pageshow", pinTopForSkipHash);
       document.removeEventListener("click", onClick);
     };
   }, []);

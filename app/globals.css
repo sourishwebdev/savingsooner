@@ -175,8 +175,9 @@
 @layer base {
   html {
     overflow-x: clip;
+    overflow-y: auto;
     background-color: var(--color-deep-iris);
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   html,
@@ -186,14 +187,9 @@
 
   body {
     min-height: 100%;
-    overflow-x: clip;
     background-color: var(--color-deep-iris);
     font-family: var(--font-gilroy);
     font-weight: var(--font-weight-medium);
-  }
-
-  html.has-smooth-scroll {
-    scroll-behavior: auto;
   }
 
   :target {

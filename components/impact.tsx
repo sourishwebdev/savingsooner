@@ -51,10 +51,9 @@ export function Impact() {
     >
       <div className="mx-auto grid max-w-page gap-48 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
         <div>
-          <p className="text-caption text-mint-vital">In schools already</p>
           <h2
             id="impact-heading"
-            className="mt-16 text-heading text-cloud-white md:text-heading-lg"
+            className="text-heading text-cloud-white md:text-heading-lg"
           >
             160+ students across 9 schools.
           </h2>

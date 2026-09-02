@@ -15,7 +15,7 @@ export function Hero() {
 
         <div className="order-1 min-w-0 lg:order-2">
           <p className="animate-enter text-caption text-pearl">
-            Applied economics · Entrepreneurship bootcamp
+            Applied Economics · Entrepreneurship Bootcamp
           </p>
           <h1
             id="hero-heading"

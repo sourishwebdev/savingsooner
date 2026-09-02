@@ -31,7 +31,7 @@ function useCountUp(target: number, start: boolean, duration = 900) {
 
 export function Impact() {
   const { ref, inView } = useInViewOnce<HTMLElement>(0.28);
-  const students = useCountUp(165, inView);
+  const students = useCountUp(160, inView);
   const schools = useCountUp(9, inView);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function Impact() {
             id="impact-heading"
             className="text-heading text-cloud-white md:text-heading-lg"
           >
-            165+ students from 9 schools.
+            160+ students from 9 schools.
           </h2>
           <p className="mt-24 max-w-[32rem] text-body text-pearl">
             A summer bootcamp students choose to take — advertised across nine
@@ -66,7 +66,7 @@ export function Impact() {
         <div className="grid gap-16 sm:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)]">
           <article className="rounded-cards border border-iris-border bg-iris-glow p-24">
             <p className="text-heading-xl text-clinical-cyan md:text-display">
-              <span className="sr-only">165+ students</span>
+              <span className="sr-only">160+ students</span>
               <span aria-hidden="true">{students}+</span>
             </p>
             <p className="mt-12 text-body-sm text-cloud-white">students</p>

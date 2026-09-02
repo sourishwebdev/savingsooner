@@ -13,7 +13,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "SavingSooner — Economics Bootcamp for Students",
   description:
-    "Co-founded applied economics and entrepreneurship summer bootcamp. Microeconomics and business models — 165+ students from 9 schools.",
+    "Co-founded applied economics and entrepreneurship summer bootcamp. Microeconomics and business models — 160+ students from 9 schools.",
 };
 
 const pinScrollScript = `(function(){history.scrollRestoration="manual";if(location.hash==="#main")history.replaceState(null,"",location.pathname+location.search);scrollTo(0,0);})();`;

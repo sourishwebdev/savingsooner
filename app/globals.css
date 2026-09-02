@@ -1,31 +1,7 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
 @theme {
-  /* Colors */
+  /* Colors — DESIGN.md */
   --color-deep-iris: #16165c;
   --color-iris-shadow: #232269;
   --color-iris-glow: #403cd5;
@@ -42,39 +18,82 @@ body {
   --color-ash: #d8d8e3;
   --color-fog: #9494a9;
 
-  /* Typography */
-  --font-gilroy: 'Gilroy', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* Typography — Scale */
+  /* Typography — Scale (DESIGN.md) */
   --text-caption: 12px;
-  --leading-caption: 1.44;
-  --tracking-caption: 0.24px;
+  --text-caption--line-height: 1.44;
+  --text-caption--letter-spacing: 0.02em;
+  --text-caption--font-weight: 500;
+
   --text-body-sm: 14px;
-  --leading-body-sm: 1.44;
-  --tracking-body-sm: 0.28px;
+  --text-body-sm--line-height: 1.44;
+  --text-body-sm--letter-spacing: 0.02em;
+  --text-body-sm--font-weight: 500;
+
+  /* 17px body is used throughout component specs; omitted from the type-scale table */
+  --text-body: 17px;
+  --text-body--line-height: 1.44;
+  --text-body--letter-spacing: -0.03em;
+  --text-body--font-weight: 500;
+
   --text-subheading: 18px;
-  --leading-subheading: 1.44;
-  --tracking-subheading: -0.54px;
+  --text-subheading--line-height: 1.44;
+  --text-subheading--letter-spacing: -0.03em;
+  --text-subheading--font-weight: 500;
+
   --text-heading-sm: 24px;
-  --leading-heading-sm: 1.44;
-  --tracking-heading-sm: -0.72px;
+  --text-heading-sm--line-height: 1.44;
+  --text-heading-sm--letter-spacing: -0.03em;
+  --text-heading-sm--font-weight: 600;
+
   --text-heading: 46px;
-  --leading-heading: 1;
-  --tracking-heading: -1.84px;
+  --text-heading--line-height: 1;
+  --text-heading--letter-spacing: -0.04em;
+  --text-heading--font-weight: 600;
+
   --text-heading-lg: 54px;
-  --leading-heading-lg: 1;
-  --tracking-heading-lg: -2.16px;
+  --text-heading-lg--line-height: 1;
+  --text-heading-lg--letter-spacing: -0.04em;
+  --text-heading-lg--font-weight: 600;
+
   --text-heading-xl: 66px;
-  --leading-heading-xl: 1;
-  --tracking-heading-xl: -2.64px;
+  --text-heading-xl--line-height: 1;
+  --text-heading-xl--letter-spacing: -0.04em;
+  --text-heading-xl--font-weight: 600;
+
   --text-display: 92px;
-  --leading-display: 0.92;
-  --tracking-display: -6.9px;
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.075em;
+  --text-display--font-weight: 600;
+
   --text-display-xl: 124px;
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: -0.075em;
+  --text-display-xl--font-weight: 600;
+
+  --leading-caption: 1.44;
+  --leading-body-sm: 1.44;
+  --leading-subheading: 1.44;
+  --leading-heading-sm: 1.44;
+  --leading-heading: 1;
+  --leading-heading-lg: 1;
+  --leading-heading-xl: 1;
+  --leading-display: 0.92;
   --leading-display-xl: 0.92;
+
+  --tracking-caption: 0.24px;
+  --tracking-body-sm: 0.28px;
+  --tracking-subheading: -0.54px;
+  --tracking-heading-sm: -0.72px;
+  --tracking-heading: -1.84px;
+  --tracking-heading-lg: -2.16px;
+  --tracking-heading-xl: -2.64px;
+  --tracking-display: -6.9px;
   --tracking-display-xl: -9.3px;
 
-  /* Spacing */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Spacing — DESIGN.md (overrides default 8/12/16… keys to the token values) */
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
@@ -86,11 +105,229 @@ body {
   --spacing-48: 48px;
   --spacing-116: 116px;
   --spacing-220: 220px;
+  --spacing-section: 80px;
+  --spacing-page: 1200px;
 
-  /* Border Radius */
+  /* Border Radius — DESIGN.md */
   --radius-md: 6.9984px;
   --radius-2xl: 15.9984px;
   --radius-3xl: 24.0048px;
   --radius-3xl-2: 31.9968px;
   --radius-full: 1425.6px;
+  --radius-tags: 9999px;
+  --radius-cards: 24px;
+  --radius-icons: 7px;
+  --radius-inputs: 16px;
+  --radius-buttons: 9999px;
+  --radius-cards-elevated: 32px;
+
+  /* Elevation — DESIGN.md */
+  --shadow-cta: 0 0 20px rgba(60, 57, 185, 0.4);
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-enter: enter 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-enter-shift: enter-shift 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-float: float 12s ease-in-out infinite;
+  --animate-draw: draw-stroke 1100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes enter-shift {
+    from {
+      transform: translateY(16px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes draw-stroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@theme inline {
+  --font-gilroy: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    overflow-x: clip;
+    background-color: var(--color-deep-iris);
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    color: var(--color-cloud-white);
+  }
+
+  body {
+    min-height: 100%;
+    overflow-x: clip;
+    background-color: var(--color-deep-iris);
+    font-family: var(--font-gilroy);
+    font-weight: var(--font-weight-medium);
+  }
+
+  :target {
+    scroll-margin-top: var(--spacing-24);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .enter-d1 {
+    animation-delay: 80ms;
+  }
+  .enter-d2 {
+    animation-delay: 160ms;
+  }
+  .enter-d3 {
+    animation-delay: 240ms;
+  }
+  .enter-d4 {
+    animation-delay: 320ms;
+  }
+  .enter-d5 {
+    animation-delay: 400ms;
+  }
+
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .draw-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .is-in .draw-path {
+    animation: draw-stroke 1100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .fold {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 480ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fold[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+
+  .fold-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .fold-body {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 280ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fold[data-open="true"] .fold-body {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 80ms;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: var(--spacing-24);
+    top: var(--spacing-8);
+    z-index: 80;
+    border-radius: var(--radius-buttons);
+    background: var(--color-cloud-white);
+    padding: var(--spacing-12) var(--spacing-24);
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.44;
+    color: var(--color-deep-iris);
+    transform: translateY(-160%);
+  }
+
+  .skip-link:focus {
+    transform: none;
+    outline: 2px solid var(--color-mint-vital);
+    outline-offset: 8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal,
+    .js .reveal.is-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .draw-path,
+    .is-in .draw-path {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+
+    .fold,
+    .fold-body {
+      transition: none;
+    }
+
+    .fold-body,
+    .fold[data-open="true"] .fold-body {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }

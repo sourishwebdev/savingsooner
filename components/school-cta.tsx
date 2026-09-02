@@ -4,6 +4,16 @@ import { type FormEvent, useState } from "react";
 import { lightCtaClass } from "@/components/cta";
 import { Reveal } from "@/components/reveal";
 
+const fieldClass =
+  "rounded-inputs border border-ash bg-cloud-white px-16 py-16 text-body text-deep-iris transition-[border-color] duration-150 hover:border-iris-pulse focus-visible:border-iris-pulse focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-mint-vital";
+
+const gradeOptions = [
+  "9th grade",
+  "10th grade",
+  "11th grade",
+  "12th grade",
+] as const;
+
 export function SchoolCta() {
   const [opened, setOpened] = useState(false);
 
@@ -11,12 +21,12 @@ export function SchoolCta() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const school = String(data.get("school") ?? "").trim();
-    const role = String(data.get("role") ?? "").trim();
+    const grade = String(data.get("grade") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
     const body = [
       `School: ${school}`,
-      `Role: ${role}`,
+      `Rising grade: ${grade}`,
       `From: ${email}`,
       "",
       message,
@@ -57,18 +67,29 @@ export function SchoolCta() {
                   type="text"
                   required
                   autoComplete="organization"
-                  className="rounded-inputs border border-ash bg-cloud-white px-16 py-16 text-body text-deep-iris transition-[border-color] duration-150 hover:border-iris-pulse focus-visible:border-iris-pulse focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-mint-vital"
+                  className={fieldClass}
                 />
               </label>
               <label className="flex flex-col gap-8">
-                <span className="text-body-sm text-deep-iris">Your role</span>
-                <input
-                  name="role"
-                  type="text"
+                <span className="text-body-sm text-deep-iris">Rising grade</span>
+                <span className="text-caption text-fog">
+                  The grade you&apos;ll start this fall
+                </span>
+                <select
+                  name="grade"
                   required
-                  autoComplete="organization-title"
-                  className="rounded-inputs border border-ash bg-cloud-white px-16 py-16 text-body text-deep-iris transition-[border-color] duration-150 hover:border-iris-pulse focus-visible:border-iris-pulse focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-mint-vital"
-                />
+                  defaultValue=""
+                  className={`${fieldClass} cursor-pointer`}
+                >
+                  <option value="" disabled>
+                    Select grade
+                  </option>
+                  {gradeOptions.map((grade) => (
+                    <option key={grade} value={grade}>
+                      {grade}
+                    </option>
+                  ))}
+                </select>
               </label>
               <label className="flex flex-col gap-8">
                 <span className="text-body-sm text-deep-iris">Email</span>
@@ -77,7 +98,7 @@ export function SchoolCta() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="rounded-inputs border border-ash bg-cloud-white px-16 py-16 text-body text-deep-iris transition-[border-color] duration-150 hover:border-iris-pulse focus-visible:border-iris-pulse focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-mint-vital"
+                  className={fieldClass}
                 />
               </label>
               <label className="flex flex-col gap-8">
@@ -85,7 +106,7 @@ export function SchoolCta() {
                 <textarea
                   name="message"
                   rows={4}
-                  className="resize-y rounded-inputs border border-ash bg-cloud-white px-16 py-16 text-body text-deep-iris transition-[border-color] duration-150 hover:border-iris-pulse focus-visible:border-iris-pulse focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-mint-vital"
+                  className={`${fieldClass} resize-y`}
                 />
               </label>
             </div>

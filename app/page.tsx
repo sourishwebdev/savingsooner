@@ -19,7 +19,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-page flex-col gap-16 sm:flex-row sm:items-center sm:justify-between sm:gap-24">
           <Wordmark compact />
           <p className="text-caption text-pearl sm:text-right">
-            Applied economics bootcamps
+            Applied economics summer bootcamp
             <span className="mt-8 block">Made 2024 · By AP Works</span>
           </p>
         </div>

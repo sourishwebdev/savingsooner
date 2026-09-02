@@ -29,7 +29,7 @@ export function SmoothScroll() {
   useEffect(() => {
     const sectionHash = () => {
       const id = window.location.hash.slice(1);
-      return id === "curriculum" || id === "impact" || id === "for-schools"
+      return id === "curriculum" || id === "impact" || id === "signup"
         ? id
         : "";
     };

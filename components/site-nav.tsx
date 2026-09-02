@@ -58,8 +58,8 @@ export function SiteNav() {
 
         <div className="flex items-center justify-end gap-12">
           <div className="hidden lg:block">
-            <a href="#for-schools" className={navCtaClass}>
-              Bring SavingSooner to your school
+            <a href="#signup" className={navCtaClass}>
+              Join the summer bootcamp
             </a>
           </div>
 
@@ -113,11 +113,11 @@ export function SiteNav() {
             </a>
           ))}
           <a
-            href="#for-schools"
+            href="#signup"
             className={`${navCtaClass} mt-8`}
             onClick={() => setOpen(false)}
           >
-            Bring SavingSooner to your school
+            Join the summer bootcamp
           </a>
         </nav>
       </div>

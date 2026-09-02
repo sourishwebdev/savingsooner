@@ -12,7 +12,7 @@ function WorkshopDrawing() {
       aria-labelledby="hero-art-title"
     >
       <title id="hero-art-title">
-        Line drawing of a classroom workshop: a market curve on the board, a work
+        Line drawing of a summer bootcamp workshop: a market curve on the board, a work
         table, and a notebook
       </title>
       <g

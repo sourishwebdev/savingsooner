@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import Script from "next/script";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
@@ -21,9 +20,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${manrope.variable} h-full antialiased`}>
       <body className="min-h-full bg-deep-iris font-gilroy text-cloud-white">
         <SmoothScroll />
-        <Script id="js-flag" strategy="beforeInteractive">
-          {`document.documentElement.classList.add('js')`}
-        </Script>
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

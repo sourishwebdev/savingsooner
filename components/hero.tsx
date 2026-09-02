@@ -1,5 +1,6 @@
 import { ghostCtaClass, primaryCtaClass } from "@/components/cta";
 import { HeroArt } from "@/components/hero-art";
+import { HeroVerb } from "@/components/hero-verb";
 
 export function Hero() {
   return (
@@ -22,12 +23,13 @@ export function Hero() {
           >
             <span className="block">Students don&apos;t</span>
             <span className="block">just study markets.</span>
-            <span className="mt-8 block">
-              They{" "}
-              <em className="relative inline-block not-italic whitespace-nowrap rounded-icons border border-dashed border-clinical-cyan px-8 py-8">
-                build
-              </em>{" "}
-              them.
+            <span className="mt-40 flex flex-wrap items-baseline gap-x-[0.22em] gap-y-8">
+              <span>They</span>
+              <span className="sr-only">
+                build, create, make, and shape
+              </span>
+              <HeroVerb />
+              <span>them.</span>
             </span>
           </h1>
           <p className="mt-32 max-w-[42rem] animate-enter enter-d3 text-body text-pearl">

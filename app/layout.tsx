@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import Script from "next/script";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${manrope.variable} h-full antialiased`}>
       <body className="min-h-full bg-deep-iris font-gilroy text-cloud-white">
+        <SmoothScroll />
         <Script id="js-flag" strategy="beforeInteractive">
           {`document.documentElement.classList.add('js')`}
         </Script>

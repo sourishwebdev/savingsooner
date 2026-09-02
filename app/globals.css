@@ -192,6 +192,10 @@
     font-weight: var(--font-weight-medium);
   }
 
+  html.has-smooth-scroll {
+    scroll-behavior: auto;
+  }
+
   :target {
     scroll-margin-top: var(--spacing-24);
   }

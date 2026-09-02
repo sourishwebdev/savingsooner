@@ -14,5 +14,5 @@ export const lightCtaClass = `inline-flex w-full items-center justify-center rou
 export const navLinks = [
   { href: "#curriculum", label: "Curriculum" },
   { href: "#impact", label: "Impact" },
-  { href: "#for-schools", label: "For schools" },
+  { href: "#signup", label: "Sign up" },
 ] as const;

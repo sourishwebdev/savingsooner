@@ -34,12 +34,12 @@ export function Hero() {
           </h1>
           <p className="mt-32 max-w-[42rem] animate-enter enter-d3 text-body text-pearl">
             SavingSooner is a co-founded applied economics and entrepreneurship
-            program. We teach microeconomics and business models as bootcamps
-            inside schools.
+            program. We teach microeconomics and business models in a summer
+            bootcamp students sign up for.
           </p>
           <div className="mt-32 flex animate-enter enter-d4 flex-col gap-16 sm:flex-row sm:flex-wrap">
-            <a href="#for-schools" className={primaryCtaClass}>
-              Bring SavingSooner to your school
+            <a href="#signup" className={primaryCtaClass}>
+              Join the summer bootcamp
             </a>
             <a href="#curriculum" className={ghostCtaClass}>
               See the curriculum

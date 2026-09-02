@@ -55,11 +55,11 @@ export function Impact() {
             id="impact-heading"
             className="text-heading text-cloud-white md:text-heading-lg"
           >
-            160+ students across 9 schools.
+            160+ students from 9 schools.
           </h2>
           <p className="mt-24 max-w-[32rem] text-body text-pearl">
-            The bootcamp is already running — not a pilot slide, a classroom
-            practice.
+            A summer bootcamp students choose to take — advertised across nine
+            schools, with participants from each one.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export function Impact() {
               <span className="sr-only">9 schools</span>
               <span aria-hidden="true">{schools}</span>
             </p>
-            <p className="mt-12 text-body-sm text-cloud-white">schools</p>
+            <p className="mt-12 text-body-sm text-cloud-white">schools reached</p>
           </article>
         </div>
       </div>

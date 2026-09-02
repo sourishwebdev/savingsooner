@@ -21,29 +21,28 @@ export function SchoolCta() {
       "",
       message,
     ].join("\n");
-    const href = `mailto:?subject=${encodeURIComponent(`SavingSooner for ${school}`)}&body=${encodeURIComponent(body)}`;
+    const href = `mailto:?subject=${encodeURIComponent(`SavingSooner sign-up — ${school}`)}&body=${encodeURIComponent(body)}`;
     setOpened(true);
     window.location.href = href;
   };
 
   return (
     <section
-      id="for-schools"
-      aria-labelledby="schools-heading"
+      id="signup"
+      aria-labelledby="signup-heading"
       className="bg-pearl px-24 py-section text-deep-iris"
     >
       <Reveal>
         <div className="mx-auto max-w-[40rem] text-center">
           <h2
-            id="schools-heading"
+            id="signup-heading"
             className="text-heading text-deep-iris md:text-heading-xl"
           >
-            Bring SavingSooner to your school
+            Join the summer bootcamp
           </h2>
           <p className="mt-24 text-body text-deep-iris">
-            For administrators deciding whether this bootcamp belongs in their
-            building — and for the students and parents asking what it actually
-            teaches.
+            For students and parents looking to sign up — or anyone with
+            questions about what we teach.
           </p>
 
           <form
@@ -52,7 +51,7 @@ export function SchoolCta() {
           >
             <div className="flex flex-col gap-24">
               <label className="flex flex-col gap-8">
-                <span className="text-body-sm text-deep-iris">School</span>
+                <span className="text-body-sm text-deep-iris">Your school</span>
                 <input
                   name="school"
                   type="text"
@@ -93,7 +92,7 @@ export function SchoolCta() {
 
             <div className="mt-32 flex flex-col items-center gap-16">
               <button type="submit" className={lightCtaClass}>
-                Bring SavingSooner to your school
+                Get in touch
               </button>
               <p className="text-caption text-deep-iris">
                 {opened

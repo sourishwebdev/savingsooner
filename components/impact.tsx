@@ -72,8 +72,9 @@ export function Impact() {
             <p className="mt-12 text-body-sm text-cloud-white">students</p>
           </article>
           <article className="rounded-cards border border-iris-border bg-iris-shadow p-24 sm:mt-32">
-            <p className="text-heading-xl text-clinical-cyan">
-              <span className="sr-only">26 states</span>
+            <p className="text-body-sm text-cloud-white">across</p>
+            <p className="mt-8 text-heading-xl text-clinical-cyan">
+              <span className="sr-only">across 26 states</span>
               <span aria-hidden="true">{states}</span>
             </p>
             <p className="mt-12 text-body-sm text-cloud-white">states</p>

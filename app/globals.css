@@ -174,7 +174,7 @@
 
 @layer base {
   html {
-    overflow-x: clip;
+    overflow-x: hidden;
     overflow-y: auto;
     overflow-anchor: none;
     background-color: var(--color-deep-iris);
@@ -188,6 +188,8 @@
 
   body {
     min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     background-color: var(--color-deep-iris);
     font-family: var(--font-gilroy);
     font-weight: var(--font-weight-medium);

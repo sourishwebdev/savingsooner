@@ -76,7 +76,7 @@ export function HeroVerb() {
 
   return (
     <span
-      className="inline-flex max-w-full align-baseline items-center rounded-icons border border-dashed border-clinical-cyan px-12 py-12 text-clinical-cyan"
+      className="relative inline-flex max-w-full align-baseline items-center overflow-hidden rounded-icons border border-dashed border-clinical-cyan px-12 py-12 text-clinical-cyan"
       aria-hidden="true"
     >
       <span
@@ -106,11 +106,11 @@ export function HeroVerb() {
       </span>
       <span
         ref={measureRef}
-        className="invisible pointer-events-none absolute top-0 left-0 flex leading-none"
+        className="pointer-events-none invisible absolute top-0 left-0 flex flex-col leading-none"
         aria-hidden="true"
       >
         {WORDS.map((word) => (
-          <span key={word} className="whitespace-nowrap px-[0.08em]">
+          <span key={word} className="w-max whitespace-nowrap px-[0.08em]">
             {word}
           </span>
         ))}
